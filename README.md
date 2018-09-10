@@ -8,19 +8,6 @@ rsync -avz --exclude="*.git/" USERNAME@192.168.1.111:/ngschool/2018 ~/ngschool
 # and type your password
 ```
 
-Cloning and syncing from github [before or after the school]
-```bash
-mkdir -p ~/ngschool
-cd ~/ngschool
-# get fresh copy of the repo
-git clone git@github.com:NGSchoolEU/2018.git
-## if you don't have write-access, use https://github.com/NGSchoolEU/2018.git instead
-
-# sync repo to the latest version
-cd ~/ngschool/2018
-git pull
-```
-
 **Table of Contents**  
    * [NGSchool2018 materials](#ngschool2018-materials)
       * [Dependencies](#dependencies)
@@ -30,10 +17,6 @@ git pull
          * [Working in VirtualBox](#working-in-virtualbox)
       * [Cloning the repository](#cloning-the-repository)
          * [Materials not included in github repo](#materials-not-included-in-github-repo)
-            * [Introduction](#introduction)
-            * [De novo assembly](#de-novo-assembly)    
-            * [Hi-C](#hi-c)    
-            * [Microbial genomics](#microbial-genomics)
 
 
 ## Dependencies
@@ -41,6 +24,17 @@ In order to run workshop examples in your own laptop, you'll need to install all
 **Note, the installation instructions are meant for Ubuntu 18.04. 
 Everything should be done in below order, it may take a few hours (especially compilation of R packages is lengthy...)
 and around 15-20GB of hard-drive space.**
+
+### Ubuntu
+```bash
+sudo apt install htop git python3-pip
+```
+
+### PIP3
+```bash
+# albacore ie. read_fast5_basecaller.py + all dependencies
+sudo pip3 install 2018/src/whl/ont_albacore-2.3.3-cp36-cp36m-manylinux1_x86_64.whl 
+```
 
 ### R, Bioconductor and other R packages
 ```bash
@@ -85,14 +79,24 @@ source /ngschool/2018/.bashrc
 
 ### Working in VirtualBox
 !!!TBD!!!
-First, [get VM image](http://zdglab.iimcb.gov.pl/cluster/ngschool/2018/VM/Ubuntu18.04.vdi)
+First, [get VM image](http://zdglab.iimcb.gov.pl/cluster/ngschool/2018/VM/ubuntu18.04.vdi)
 and [create VM in VirtualBox using this image](http://linuxbsdos.com/2015/11/13/how-to-import-a-virtual-machine-image-into-virtualbox/). 
 Then run VM (u: ngschool p: ngschool), enter NGSchoool directory `cd /ngschool/2017` and you are ready to work. 
 
 
 ## Cloning the repository
 **This has to be done only if you wish to explore materials before the school. Otherwise, ignore below.**  
-To clone repo, use `git clone --recursive https://github.com/NGSchoolEU/2017.git`  
+Cloning and syncing from github [before or after the school]
+```bash
+# get fresh copy of the repo
+mkdir -p ~/ngschool && cd ~/ngschool
+git clone --recursive https://github.com/NGSchoolEU/2018.git
+
+# or sync repo to the latest version
+cd ~/ngschool/2018
+git pull
+```
+
 Below, we're providing links to data not included in this repository. 
 
 ### Materials not included in github repo
