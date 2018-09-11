@@ -27,13 +27,15 @@ and around 15-20GB of hard-drive space.**
 
 ### Ubuntu
 ```bash
-sudo apt install htop git python3-pip
+sudo apt install htop git python3-pip libxml2-dev libcurl4-openssl-dev libssl-dev
 ```
 
 ### PIP3
 ```bash
 # albacore ie. read_fast5_basecaller.py + all dependencies
-sudo pip3 install 2018/src/whl/ont_albacore-2.3.3-cp36-cp36m-manylinux1_x86_64.whl 
+sudo pip3 install 2018/src/whl/ont_albacore-2.3.3-cp36-cp36m-manylinux1_x86_64.whl
+## note above is for Python 3.6 (default in Ubuntu 18.04),
+## for Python 3.4 or 3.5 just find respective .whl file in the same directory
 ```
 
 ### R, Bioconductor and other R packages
@@ -46,15 +48,19 @@ sudo apt install r-base r-base-dev
 
 # install R packages for all users
 sudo R | tee -a /tmp/r.log
-source("https://bioconductor.org/biocLite.R") # bioconductor
+
+# CRAN packages
+install.packages('tidyverse')
+install.packages('data.table')
+
+# devtools ie to install from github
+install.packages('devtools')
+devtools::install_github('gabraham/flashpca/flashpcaR')
+
+# bioconductor
+source("https://bioconductor.org/biocLite.R") 
 biocLite('BiocInstaller');
-
-install.packages("GRanges");
-install.packages("DataTable");
-install.packages("tidyverse");
-install.packages("data.table");
-install.packages("flashpcaR");
-
+biocLite('GenomicRanges'); 
 ```
 
 
