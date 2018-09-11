@@ -25,13 +25,33 @@ In order to run workshop examples in your own laptop, you'll need to install all
 Everything should be done in below order, it may take a few hours (especially compilation of R packages is lengthy...)
 and around 15-20GB of hard-drive space.**
 
-### Ubuntu
+### [bioconda](https://bioconda.github.io/) & [docker](https://docker.com)
 ```bash
-sudo apt install htop git python3-pip libxml2-dev libcurl4-openssl-dev libssl-dev
+# install conda ie. in /ngschool/src/miniconda2
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh 
+
+# configure bioconda channels
+#(conda config --add channels r)
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda config --add channels bioconda
+
+# install dependencies - AVOID INSTALLING r-base, as it'll mess up with native R installation
+conda install nanonet nanocall poretools spades miniasm racon blasr minimap2 ngmlr bwa edlib mummer nanopolish
+conda install delly manta snpeff vcfanno seqtk samtools igv survivor bandage quast busco bedtools
+conda install canu tablet
 ```
 
-### PIP3
+### Ubuntu
 ```bash
+sudo apt install htop git python-pip python3-pip libxml2-dev libcurl4-openssl-dev libssl-dev last-align poretools deepnano
+```
+
+### PIP & PIP3
+```bash
+sudo pip install -U biopython matplotlib seaborn pandas cython numpy h5py Theano python-dateutil
+
 # albacore ie. read_fast5_basecaller.py + all dependencies
 sudo pip3 install 2018/src/whl/ont_albacore-2.3.3-cp36-cp36m-manylinux1_x86_64.whl
 ## note above is for Python 3.6 (default in Ubuntu 18.04),
