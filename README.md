@@ -84,6 +84,18 @@ biocLite('GenomicRanges');
 ```
 
 
+### MinKNOW
+```bash
+
+sudo apt-get install wget
+wget -O- https://mirror.oxfordnanoportal.com/apt/ont-repo.pub | sudo apt-key add -
+echo "deb http://mirror.oxfordnanoportal.com/apt xenial-stable non-free" | sudo tee /etc/apt/sources.list.d/nanoporetech.sources.list
+
+sudo apt-get update
+sudo apt-get install minknow-nc
+
+```
+
 ## Running exercises
 
 ### Working in your own laptop
